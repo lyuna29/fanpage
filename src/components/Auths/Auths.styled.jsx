@@ -12,8 +12,8 @@ export const StLayout = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 20px;
-  width: 500px;
-  height: 650px;
+  width: 380px;
+  height: 550px;
   background-color: #d9e6ff;
 `;
 
@@ -33,9 +33,9 @@ export const StInput = styled.div`
   align-items: center;
   margin-top: 20px;
   input {
-    width: 300px;
-    height: 40px;
-    margin: 30px;
+    width: 220px;
+    height: 35px;
+    margin: 20px;
     border: 0;
   }
 `;
@@ -46,8 +46,8 @@ export const StBtn = styled.div`
   button {
     border-radius: 10px;
     border: 0;
-    width: 100px;
-    height: 40px;
-    margin: 25px;
+    width: 80px;
+    height: 35px;
+    margin: 20px;
   }
 `;

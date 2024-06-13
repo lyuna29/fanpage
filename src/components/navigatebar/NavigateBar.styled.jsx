@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Stnavigate = styled.div`
-  width: 100%;
   background-color: #9dafd8;
   display: flex;
   padding: 10px 20px;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
+  width: calc(100% - 2rem);
   top: 0;
   z-index: 1000;
+  cursor: pointer;
   img {
     width: 400px;
     height: 70px;
@@ -29,7 +29,7 @@ export const Navitems = styled.div`
 
 export const NavItem = styled(Link)`
   color: white;
-  margin: 0 10px;
+  margin: 20px;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
@@ -38,4 +38,6 @@ export const NavItem = styled(Link)`
 export const StNavLogin = styled.button`
   border: 0;
   border-radius: 10px;
+  margin-right: 10px;
+  cursor: pointer;
 `;
