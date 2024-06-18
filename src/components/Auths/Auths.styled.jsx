@@ -18,8 +18,8 @@ export const StLayout = styled.div`
 `;
 
 export const StLogo = styled.img`
-  width: 200px;
-  height: auto;
+  width: 150px;
+  height: 140px;
   margin: 0 auto;
   margin-top: 20px;
   cursor: pointer;

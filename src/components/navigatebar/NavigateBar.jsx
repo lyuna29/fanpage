@@ -1,5 +1,4 @@
 import React from "react";
-import { StLogo } from "../Auths/Auths.styled";
 import { useNavigate } from "react-router-dom";
 import logo from "/Users/lyuna/Desktop/fanpage-wook/src/assets/main_logo.png";
 import {
@@ -22,9 +21,9 @@ export default function NavigateBar() {
     <Stnavigate>
       <img onClick={handleLogoClick} src={logo} alt="로고이미지" />
       <Navitems>
-        <NavItem to="">직캠</NavItem>
-        <NavItem to="">Bubble</NavItem>
-        <NavItem to="">멤트</NavItem>
+        <NavItem to="/cam">직캠</NavItem>
+        <NavItem to="/bubble">Bubble</NavItem>
+        <NavItem to="/memtwit">멤트</NavItem>
       </Navitems>
       <StNavLogin onClick={loginclick}>로그인</StNavLogin>
     </Stnavigate>

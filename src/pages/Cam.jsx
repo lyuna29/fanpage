@@ -1,7 +1,8 @@
 import React from "react";
+import NavigateBar from "../components/navigatebar/NavigateBar";
 
 const Cam = () => {
-  return <div>Cam</div>;
+  return <NavigateBar />;
 };
 
 export default Cam;

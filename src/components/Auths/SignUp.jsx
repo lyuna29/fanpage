@@ -2,10 +2,11 @@ import { useState } from "react";
 import { StBtn, StInput, StLayout, StLogo, Wrapper } from "./Auths.styled";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
+import supabase from "../../../supabase/supabaseClient";
 
 export default function SignUp() {
   const navigate = useNavigate();
-  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
 
@@ -14,32 +15,38 @@ export default function SignUp() {
   };
 
   const handleSignUpClick = async () => {
-    const response = await register({
-      id: id,
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
       password: password,
       nickname: nickname,
     });
-    if (response) {
-      confirm("회원가입이 완료되었습니다.");
-      navigate("/auths/login");
+    if (error) {
+      throw error;
     }
+    console.log(data);
+    const { data: user } = await supabase.from("users").insert({
+      id: data.user.id,
+      created_at: data.user.created_at,
+      email: data.user.email,
+      nickname: nickname,
+    });
   };
   return (
     <Wrapper>
       <StLayout>
+        <StLogo onClick={handleLogoClick} src={logo} alt="로고이미지" />
         <StInput>
-          <StLogo onClick={handleLogoClick} src={logo} alt="로고이미지" />
           <input
             type="text"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="아이디를 입력하세요"
           />
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="비밀변호를 입력하세요"
+            placeholder="비밀번호를 입력하세요"
           />
           <input
             type="text"

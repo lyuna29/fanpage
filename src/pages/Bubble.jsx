@@ -1,7 +1,8 @@
 import React from "react";
+import NavigateBar from "../components/navigatebar/NavigateBar";
 
 const Bubble = () => {
-  return <div>Bubble</div>;
+  return <NavigateBar />;
 };
 
 export default Bubble;

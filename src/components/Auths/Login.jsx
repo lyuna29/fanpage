@@ -2,23 +2,25 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StBtn, StInput, StLayout, StLogo, Wrapper } from "./Auths.styled";
 import logo from "../../assets/logo.png";
+import supabase from "../../../supabase/supabaseClient";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogoClick = () => {
     navigate("/auths/login");
   };
   const handleLogInClick = async () => {
-    const { id, password } = await login({
-      id: id,
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
       password: password,
     });
-    alert("로그인이 되었습니다");
-    setUser({ id, password });
-    navigate("/");
+    if (error) {
+      throw error;
+    }
+    console.log(data);
   };
 
   const handleSignUpClick = async () => {
@@ -32,7 +34,7 @@ export default function Login() {
         <StInput>
           <input
             type="text"
-            onChange={(e) => setId(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="이메일"
           />
           <input
