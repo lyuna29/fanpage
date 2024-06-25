@@ -2,13 +2,19 @@ import { useState } from "react";
 import { StBtn, StInput, StLayout, StLogo, Wrapper } from "./Auths.styled";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
-import supabase from "../../../supabase/supabaseClient";
+import supabase from "../../supabase/supabaseClient";
 
 export default function SignUp() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
+
+  const [form, setForm] = useState({
+    email: "",
+    nickname: "",
+    password: "",
+  });
 
   const handleLogoClick = async () => {
     navigate("/auths/login");
@@ -30,6 +36,17 @@ export default function SignUp() {
       email: data.user.email,
       nickname: nickname,
     });
+    if (!email || !password || !nickname) {
+      alert("내용을 모두 입력하세요.");
+    }
+
+    setForm({
+      nickname: nickname,
+      email: email,
+      password: password,
+    });
+    alert("회원가입 성공!");
+    navigate("/auths/login");
   };
   return (
     <Wrapper>

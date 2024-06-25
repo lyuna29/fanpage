@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { StBtn, StInput, StLayout, StLogo, Wrapper } from "./Auths.styled";
 import logo from "../../assets/logo.png";
-import supabase from "../../../supabase/supabaseClient";
+import supabase from "../../supabase/supabaseClient";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ export default function Login() {
       throw error;
     }
     console.log(data);
+    navigate("/");
   };
 
   const handleSignUpClick = async () => {
